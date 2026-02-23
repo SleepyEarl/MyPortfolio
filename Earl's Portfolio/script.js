@@ -25,3 +25,31 @@ if (window.Typed) {
         loop: true 
     });
 }
+
+// Image Gallery Modal Functionality
+var modal = document.getElementById("imageModal");
+var modalImage = document.getElementById("modalImage");
+var closeBtn = document.querySelector(".close-btn");
+
+// Open modal when gallery image is clicked
+document.querySelectorAll(".gallery-image").forEach(function(img) {
+    img.addEventListener("click", function() {
+        modal.classList.add("show");
+        modalImage.src = this.src;
+        document.body.style.overflow = "hidden";
+    });
+});
+
+// Close modal when close button is clicked
+closeBtn.addEventListener("click", function() {
+    modal.classList.remove("show");
+    document.body.style.overflow = "auto";
+});
+
+// Close modal when clicking outside the image
+modal.addEventListener("click", function(e) {
+    if (e.target === modal) {
+        modal.classList.remove("show");
+        document.body.style.overflow = "auto";
+    }
+});
